@@ -2,6 +2,33 @@
     Document   : index
     Created on : Sep 5, 2014, 12:23:18 AM
     Author     : Kyle Uhan
+    Notes:     : To add more shapes/forms:
+                 make the form (copy and paste the one above it and change the details)
+                 add a hidden input right after declaring the form tag - example:
+                --------------------------------------------
+                <input name="formName" type="hidden" value="whatEverTheFormNameIs"/>
+                --------------------------------------------
+                (keep everything the same except for the value - make that the actual form name)
+
+                Now add a hidden input for every input where you're gathering info - example:
+                <input name="inputValue" type="hidden" value="triangle1"/>
+                <input name="inputValue2" type="hidden" value="triangle2"/>
+
+                <div id='triangle'>
+                    <div id='triInput1'>
+                        <p>Side 1: </p>
+                        <input class='input' name='triangle1' type='text' value='' placeholder='000'/>
+                    </div>
+                    <div id='triInput2'>
+                        <p>Side 2:  </p>
+                        <input class='input' name='triangle2' type='text' value='' placeholder='000'/>
+                    </div>
+                </div>
+                
+                (keep the name as InputValue and increment as needed (ie: InputValue2, InputValue3..))
+                (adjust the value to represent the name of the desired input)
+                
+            
 --%>
 
 <%@page import="java.util.List"%>
@@ -44,7 +71,7 @@
                 RectangleCalculator rec = null;
                 CircleCalculator circ = null;
                 TriangleCalculator tri = null;
-                
+
                 //Global vars for js
                 int calc = -1;
                 double len = 0.0, wid = 0.0, diameter = 0.0, s1 = 0.0, s2 = 0.0, s3 = 0.0;
@@ -87,6 +114,7 @@
         <!--END RESPONSE TEXT AREA-->
 
         <!--MENU/OPTIONS and FORMS AREA-->
+        <!--RECTANGLE-->
         <form id='recForm' name='rectArea' method="POST" action='AreaCalculatorController'>
             <input name="formName" type="hidden" value="rectArea"/>
             <input name="inputValue" type="hidden" value="length"/>
@@ -105,6 +133,7 @@
             <input class='submit' type="submit" name='submit' value='calculate'/>
         </form>
 
+        <!--CIRCLE-->
         <form id='cirForm' name='circleArea' method="POST" action='AreaCalculatorController'>
             <input name="formName" type="hidden" value="circleArea"/>
             <input name="inputValue" type="hidden" value="diameter"/>
@@ -117,6 +146,7 @@
             <input class='submit' type="submit" name='submitCircle' value='calculate'/>
         </form>
 
+        <!--TRIANGLE-->
         <form id='triForm' name='triangleArea' method="POST" action='AreaCalculatorController'>
             <input name="formName" type="hidden" value="triangleArea"/>
             <input name="inputValue" type="hidden" value="triangle1"/>
@@ -137,22 +167,13 @@
         <!--END MENU/OPTIONS and FORMS AREA-->
 
         <!--RESPONSE SHAPE AREA-->
-        <div id='squareResponse'>
-            <span id='h'></span>
-            <span id='l'></span>
-        </div>
-        <div id='circleResponse'>
-            <span id='diameter'></span>
-            <span id='radius'></span>
-        </div>
-        <div id='triangleResponse'>
-            <span id='side1' class='side'></span>
-            <span id='side2' class='side'></span>
-            <span id='side3' class='side'></span>
+        <div id='squareResponse'><span id='h'></span><span id='l'></span></div>
+        <div id='circleResponse'><span id='diameter'></span><span id='radius'></span></div>
+        <div id='triangleResponse'><span id='side1' class='side'></span><span id='side2' class='side'></span><span id='side3' class='side'></span>
         </div>
         <!--END RESPONSE SHAPE AREA-->
-        
-        <!--GLOBAL VAR FOR EXTERNAL SHEET & SHAPE BUILDERS-->
+
+        <!--SHAPE BUILDERS-->
         <script>
             function buildSquare() {
                 var len = '<%=wid%>';
@@ -187,12 +208,12 @@
                 $('#triangleResponse').animate({
                     borderWidth: s3Hold
                 }, 500).animate({'margin-left': s1Hold + 'px'});
-                $('#side3').animate({left: '-'+s1Hold*2+'px'},500);
+                $('#side3').animate({left: '-' + s1Hold * 2 + 'px'}, 500);
                 $('#side3').text(s3);
             }
-            
+
             var calc = '<%=calc%>';
         </script>
-        <!--END GLOBAL VAR FOR EXTERNAL SHEET & SHAPE BUILDERS-->
+        <!--END SHAPE BUILDERS-->
     </body>
 </html>

@@ -24,7 +24,6 @@ h1,h2,h4,.radio, .submit, #response, #squareResponse, #circleResponse, #triangle
     cursor: pointer;
 }
 
-
 /***Rectangle input***/
 .submit{
     width: 100px;
@@ -126,6 +125,7 @@ h1,h2,h4,.radio, .submit, #response, #squareResponse, #circleResponse, #triangle
 
 /**Response**/
 #response{
+    border-top: 2px solid black;
     border-left: 2px solid black;
     width: 150px;
     padding-left: 5px;
