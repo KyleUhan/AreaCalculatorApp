@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  *
  * High level Calculator Service Class
- * 
+ *
  * @author Kyle Uhan
  */
 public class WebAppCalculator {
@@ -22,20 +22,20 @@ public class WebAppCalculator {
     private static final String INPUT = "input";
     private static final String FORM_NAME = "formName";
     private static final String[] KEY_FORM_ID = {"rec", "cir", "tri"};
-    
 
     private HttpServletRequest request;
     private CalculateAreaStrategy currentCalc;
     private List<CalculateAreaStrategy> calculator = new ArrayList();
     private List<Boolean> calcSelected = new ArrayList();
 
-    public WebAppCalculator() {}
+    public WebAppCalculator() {
+    }
 
     /**
-     *  Constructor allows servlet request object to be passed in.  Currently,
+     * Constructor allows servlet request object to be passed in. Currently,
      * calculator objects are being set manually - switch to allow user to pass in
-     * 
-     * 
+     *
+     *
      * @param request
      */
     public WebAppCalculator(HttpServletRequest request) {
@@ -46,24 +46,6 @@ public class WebAppCalculator {
         getCalculator().stream().forEach((_item) -> {
             getCalcSelected().add(Boolean.FALSE);
         });
-    }
-
-    private String findCalcType(String paramenter) {
-        String formName = getRequest().getParameter(paramenter);
-        return formName;
-    }
-
-    private Map<String, String[]> findAll() {
-        return request.getParameterMap();
-    }
-
-    private ArrayList<String> getInputValues() {
-        ArrayList<String> inputList = new ArrayList<>();
-        getRequest().getAttribute(AREA_CALC);
-        findAll().keySet().stream().filter((s) -> (s.contains(INPUT))).forEach((s) -> {
-            inputList.add(getRequest().getParameter(findCalcType(s)));
-        });
-        return inputList;
     }
 
     public String getArea() {
@@ -88,7 +70,25 @@ public class WebAppCalculator {
     }
 
     private void setCalcSelectedValue(final int calcPosition) {
-        getCalcSelected().set(calcPosition, Boolean.TRUE );
+        getCalcSelected().set(calcPosition, Boolean.TRUE);
+    }
+
+    private String findCalcType(String paramenter) {
+        String formName = getRequest().getParameter(paramenter);
+        return formName;
+    }
+
+    private Map<String, String[]> findAll() {
+        return request.getParameterMap();
+    }
+
+    private ArrayList<String> getInputValues() {
+        ArrayList<String> inputList = new ArrayList<>();
+        getRequest().getAttribute(AREA_CALC);
+        findAll().keySet().stream().filter((s) -> (s.contains(INPUT))).forEach((s) -> {
+            inputList.add(getRequest().getParameter(findCalcType(s)));
+        });
+        return inputList;
     }
 
     private void setCurrentCalc(final int calcPosition) {
@@ -122,11 +122,5 @@ public class WebAppCalculator {
     public final List<Boolean> getCalcSelected() {
         return calcSelected;
     }
-
-    public void setCalcSelected(List<Boolean> calcSelected) {
-        this.calcSelected = calcSelected;
-    }
-
-    
 
 }

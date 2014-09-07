@@ -1,8 +1,4 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
+
 /* 
     Created on : Sep 4, 2014, 12:57:39 AM
     Author     : Kyle
@@ -13,7 +9,7 @@ and open the template in the editor.
     padding: 0;
 }
 
-h1,h2,h4,#response, #squareResponse, #circleResponse, #triangleResponse{
+h1,h2,h4,.radio, .submit, #response, #squareResponse, #circleResponse, #triangleResponse{
     margin-left: 30px;
 }
 
@@ -24,10 +20,6 @@ h1,h2,h4,#response, #squareResponse, #circleResponse, #triangleResponse{
 }
 
 /***Radio button selection menu***/
-.radio{
-    margin-left: 30px;
-}
-
 .radio, label:hover{
     cursor: pointer;
 }
@@ -35,7 +27,6 @@ h1,h2,h4,#response, #squareResponse, #circleResponse, #triangleResponse{
 
 /***Rectangle input***/
 .submit{
-    margin-left: 30px;
     width: 100px;
     height: 50px;
     -webkit-transition: all .2s;
@@ -53,9 +44,7 @@ h1,h2,h4,#response, #squareResponse, #circleResponse, #triangleResponse{
     width: 300px;
     height: 300px;
     margin: 30px;
-    border: 1px solid red;
     background: red;
-
 }
 
 .inputArea{
@@ -142,12 +131,15 @@ h1,h2,h4,#response, #squareResponse, #circleResponse, #triangleResponse{
     padding-left: 5px;
 }
 
+#squareResponse, #circleResponse, #triangleResponse{
+    width: 0; 
+    height: 0; 
+}
+
 /*Square Response*/
 #squareResponse{
     position: relative;
     top: 50px;
-    width: 0px;
-    height: 0px;
     margin-bottom: 5%;
     background: red;
 }
@@ -164,8 +156,6 @@ h1,h2,h4,#response, #squareResponse, #circleResponse, #triangleResponse{
 
 /**Circle Response**/
 #circleResponse{
-    width: 0px;
-    height: 0px;
     margin-bottom: 5%;
     background: blue;
     border-radius: 50%;
@@ -187,8 +177,6 @@ h1,h2,h4,#response, #squareResponse, #circleResponse, #triangleResponse{
 
 /**Triangle Response**/
 #triangleResponse{
-    width: 0; 
-    height: 0; 
     border-top: 0px solid transparent;
     border-bottom: 0px solid transparent;
     border-left: 0px solid green;
