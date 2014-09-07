@@ -6,13 +6,14 @@
 package model;
 
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 /**
  *
+ * High level Calculator Service Class
+ * 
  * @author Kyle Uhan
  */
 public class WebAppCalculator {
