@@ -1,0 +1,206 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 4, 2014, 12:57:39 AM
+    Author     : Kyle
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1,h2,h4,#response, #squareResponse, #circleResponse, #triangleResponse{
+    margin-left: 30px;
+}
+
+#squareWrapper, #circle, #triangle, #squareResponse, #circleResponse{
+    -webkit-box-shadow: 10px 10px 10px #000;
+    -moz-box-shadow: 10px 10px 10px #000;
+    box-shadow: 10px 10px 10px #000;
+}
+
+/***Radio button selection menu***/
+.radio{
+    margin-left: 30px;
+}
+
+.radio, label:hover{
+    cursor: pointer;
+}
+
+
+/***Rectangle input***/
+.submit{
+    margin-left: 30px;
+    width: 100px;
+    height: 50px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
+
+.submit:hover{
+    font-size: 20px; 
+    cursor: pointer;
+}
+
+#squareWrapper{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 30px;
+    border: 1px solid red;
+    background: red;
+
+}
+
+.inputArea{
+    font-size: 20px;
+}
+
+#len{
+    position: absolute;
+    text-align: center;
+    left: 100px;
+}
+
+#wid{
+    position: absolute;
+    top: 150px;
+    right: 4px;
+    text-align: right;
+}
+
+.input{
+    width: 60px;
+    height: 30px;
+    font-size: 20px;
+}
+
+/*Circle input*/
+#circle{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 30px;
+    background: blue;
+    border-radius: 50%;
+}
+
+#circleInput{
+    position: relative;
+    width: 60px;
+    height: 50px;
+    font-size: 20px;
+    margin-left: 120px;
+    top: 120px;
+}
+
+/*Triangle*/
+#triangle{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 30px;
+    background: green;
+    overflow: hidden;
+}
+
+#triCover{
+    position: relative;
+    width: 450px;
+    height: 350px;
+    background: white;
+    left:-198px;
+    top:-150px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);    
+}
+
+#triInput1{
+    position: absolute;
+    right: 100px;
+    bottom: 3px;
+}
+
+#triInput2{
+    position: absolute;
+    right: 3px;
+    top: 120px;
+
+}
+
+/**Response**/
+#response{
+    border-left: 2px solid black;
+    width: 150px;
+    padding-left: 5px;
+}
+
+/*Square Response*/
+#squareResponse{
+    position: relative;
+    top: 50px;
+    width: 0px;
+    height: 0px;
+    margin-bottom: 5%;
+    background: red;
+}
+
+#l{
+    position: relative;
+    float: right;
+    top: 40%;
+}
+
+#h{
+    margin-left: 30%;
+}
+
+/**Circle Response**/
+#circleResponse{
+    width: 0px;
+    height: 0px;
+    margin-bottom: 5%;
+    background: blue;
+    border-radius: 50%;
+}
+
+#diameter{
+    position: absolute;
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+#radius{
+    position: relative;
+    border-bottom: 1px solid black;
+    text-align: center;
+    float: right;
+    margin-top: 55%;
+}
+
+/**Triangle Response**/
+#triangleResponse{
+    width: 0; 
+    height: 0; 
+    border-top: 0px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-left: 0px solid green;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    margin-left: 10%;
+}
+
+#side3{
+    position: absolute;
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
