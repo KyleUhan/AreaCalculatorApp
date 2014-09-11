@@ -7,6 +7,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -43,10 +44,20 @@ public class CircleCalculator implements CalculateAreaStrategy{
     public final void setDiameter(final double diameter) {
         this.diameter = diameter;
     }
+    
+    @Override
+    public List<String> getValues() {
+        List<String> values = new ArrayList<>();
+        values.add(getDiameter()+"");
+        values.add((getDiameter()/2) + "");
+        return values;
+    }
 
     @Override
     public String toString() {
         return "Diameter: " + getDiameter() + "<br>Radius: " + getDiameter()/2;
     }
+
+   
 
 }

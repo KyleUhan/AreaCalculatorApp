@@ -3,7 +3,8 @@
  */
 
 $(function() {
-    switch (calc) {
+
+    switch (calcPosition) {
         case '0':
             buildSquare();
             break;

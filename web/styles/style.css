@@ -9,7 +9,7 @@
     padding: 0;
 }
 
-h1,h2,h4,.radio, .submit, #response, #squareResponse, #circleResponse, #triangleResponse{
+h1,h2,h4,.radio, .submit, #response, #squareResponse, #circleResponse, #triangleResponse, footer{
     margin-left: 30px;
 }
 

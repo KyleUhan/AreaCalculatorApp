@@ -6,6 +6,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -56,5 +57,13 @@ public class RectangleCalculator implements CalculateAreaStrategy {
     @Override
     public String toString() {
         return "";
+    }
+
+    @Override
+    public List<String> getValues() {
+        List<String> values = new ArrayList<>();
+        values.add(getLength()+"");
+        values.add(getWidth() + "");
+        return values;
     }
 }

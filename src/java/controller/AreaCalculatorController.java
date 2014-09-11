@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import model.WebAppCalculator;
 
 /**
- *
  * @author Kyle
  */
 @WebServlet(name = "AreaCalculatorController", urlPatterns = {"/AreaCalculatorController"})
@@ -27,7 +27,16 @@ public class AreaCalculatorController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         WebAppCalculator calc = new WebAppCalculator(request);
-        request.setAttribute("areaCalculator", calc);
+        
+        String area = calc.getArea();
+        String currentCalcValues = calc.getCurrentCalc().toString();
+        Integer calcPoisition = calc.getCalcPosition();
+        List<String> values = calc.getValues();
+        
+        request.setAttribute("area", area);
+        request.setAttribute("displayValues", currentCalcValues);
+        request.setAttribute("calcPoisition", calcPoisition);
+        request.setAttribute("values", values);
         
         RequestDispatcher view = request.getRequestDispatcher("index.jsp");
         view.forward(request, response);
@@ -69,7 +78,7 @@ public class AreaCalculatorController extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Claculator COntroller";
+        return "Claculator Controller";
     }// </editor-fold>
 
 }

@@ -7,6 +7,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,5 +17,5 @@ public interface CalculateAreaStrategy {
     public static final int ZERO = 0;
     public double getArea();
     public double getArea(ArrayList<String> list);
-    
+    public List<String> getValues();
 }

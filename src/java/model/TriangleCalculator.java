@@ -6,6 +6,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -75,6 +76,15 @@ public class TriangleCalculator implements CalculateAreaStrategy {
     @Override
     public String toString() {
         return "Side 1: " + getTrianleOne() + "<br> Side 2: " + getTrianleTwo() + "<br> Side 3: " + getTriangleThree();
+    }
+
+    @Override
+    public List<String> getValues() {
+        List<String> values = new ArrayList<>();
+        values.add(getTrianleOne()+"");
+        values.add(getTrianleTwo() + "");
+        values.add(getTriangleThree() + "");
+        return values;
     }
 
 }

@@ -31,6 +31,7 @@
             
 --%>
 
+<%@page import="model.CalculateAreaStrategy"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.TriangleCalculator"%>
@@ -63,53 +64,40 @@
             <label for="triangleRd">Triangle</label>
         </nav>
         <br>
+        <%
+            double len = 0.0, wid = 0.0, diameter = 0.0, s1 = 0.0, s2 = 0.0, s3 = 0.0;
+            int calcPosition = -1;
+            Object obj = null;
+            obj = request.getAttribute("calcPoisition");
+            if(obj != null){
+                calcPosition = (Integer)obj;
+            }
+            
+            List<String> values = null;
+            obj = request.getAttribute("values");
+            if(obj != null){
+                values = (ArrayList<String>)obj;
+            }
+            switch (calcPosition) {
+                case 0:
+                    len = Double.parseDouble(values.get(0));
+                    wid = Double.parseDouble(values.get(1));
+                    break;
+                case 1:
+                    diameter = Double.parseDouble(values.get(0));
+                    break;
+                case 2:
+                    s1 = Double.parseDouble(values.get(0));
+                    s2 = Double.parseDouble(values.get(1));
+                    s3 = Double.parseDouble(values.get(2));
+                    break;
+                default:
+            }
+        %>
         <!--RESPONSE TEXT AREA-->
         <div id="response">
-            <%
-                List<Boolean> selectedItem = new ArrayList();
-                WebAppCalculator inputValue = null;
-                RectangleCalculator rec = null;
-                CircleCalculator circ = null;
-                TriangleCalculator tri = null;
-
-                //Global vars for js
-                int calc = -1;
-                double len = 0.0, wid = 0.0, diameter = 0.0, s1 = 0.0, s2 = 0.0, s3 = 0.0;
-                //end vars
-                try {
-                    inputValue = (WebAppCalculator) request.getAttribute("areaCalculator");
-                    selectedItem = inputValue.getCalcSelected();
-                    out.println("Area: " + inputValue.getArea() + "<br>" + inputValue.getCurrentCalc().toString());
-                } catch (Exception e) {
-                    out.print("");
-                }
-
-                for (int i = 0; i < selectedItem.size(); i++) {
-                    if (selectedItem.get(i)) {
-                        calc = i;
-                    }
-                }
-
-                switch (calc) {
-                    case 0:
-                        rec = (RectangleCalculator) inputValue.getCurrentCalc();
-                        len = rec.getLength();
-                        wid = rec.getWidth();
-                        break;
-                    case 1:
-                        circ = (CircleCalculator) inputValue.getCurrentCalc();
-                        diameter = circ.getDiameter();
-                        break;
-                    case 2:
-                        tri = (TriangleCalculator) inputValue.getCurrentCalc();
-                        s1 = tri.getTrianleOne();
-                        s2 = tri.getTrianleTwo();
-                        s3 = tri.getTriangleThree();
-                        break;
-                    default:
-
-                }
-            %>
+          Area: ${area}<br>
+          ${displayValues}<br>
         </div>
         <!--END RESPONSE TEXT AREA-->
 
@@ -166,15 +154,29 @@
         </form>
         <!--END MENU/OPTIONS and FORMS AREA-->
 
+
+
         <!--RESPONSE SHAPE AREA-->
         <div id='squareResponse'><span id='h'></span><span id='l'></span></div>
         <div id='circleResponse'><span id='diameter'></span><span id='radius'></span></div>
         <div id='triangleResponse'><span id='side1' class='side'></span><span id='side2' class='side'></span><span id='side3' class='side'></span>
         </div>
         <!--END RESPONSE SHAPE AREA-->
-
+        <br>
+        <br>
+        <br>
+        <footer>
+            email at:
+            <a href="mailto:<%getServletContext().getInitParameter("adminEmail");%>">
+           
+                <%
+                out.print(getServletContext().getInitParameter("adminEmail"));
+            %>
+            </a>
+        </footer>
         <!--SHAPE BUILDERS-->
         <script>
+            var calcPosition = ('<%=calcPosition%>');
             function buildSquare() {
                 var len = '<%=wid%>';
                 var wid = '<%=len%>';
@@ -211,8 +213,7 @@
                 $('#side3').animate({left: '-' + s1Hold * 2 + 'px'}, 500);
                 $('#side3').text(s3);
             }
-
-            var calc = '<%=calc%>';
+            var calcUsed = ('<%=calcPosition%>');
         </script>
         <!--END SHAPE BUILDERS-->
     </body>
